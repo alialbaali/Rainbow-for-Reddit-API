@@ -4,14 +4,16 @@ val logback_version: String by project
 
 plugins {
     application
-    kotlin("jvm") version "1.5.30"
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.5.30"
+    kotlin("jvm") version "1.8.10"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
+    id("io.ktor.plugin") version "2.2.3"
 }
 
-group = "rainbowapp.dev"
+group = "rainbow"
 version = "0.0.1"
+
 application {
-    mainClass.set("rainbowapp.dev.ApplicationKt")
+    mainClass.set("rainbow.ApplicationKt")
 }
 
 repositories {
@@ -25,6 +27,9 @@ tasks.create("stage") {
 dependencies {
     implementation("io.ktor:ktor-server-core:$ktor_version")
     implementation("io.ktor:ktor-serialization:$ktor_version")
+    implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+    implementation("io.ktor:ktor-server-call-logging:$ktor_version")
     implementation("io.ktor:ktor-server-netty:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")

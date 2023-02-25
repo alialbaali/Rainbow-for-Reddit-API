@@ -1,18 +1,20 @@
-package rainbowapp.dev
+package rainbow
 
-import io.ktor.application.*
-import io.ktor.features.*
 import io.ktor.http.*
-import io.ktor.response.*
-import io.ktor.routing.*
-import io.ktor.serialization.*
+import io.ktor.serialization.kotlinx.json.*
+import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import io.ktor.server.plugins.callloging.*
+import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
 import kotlinx.coroutines.delay
 import org.slf4j.event.Level
+import kotlin.collections.set
 
 fun main() {
-    embeddedServer(Netty, port = System.getenv("PORT").toInt(), host = "0.0.0.0") {
+    embeddedServer(Netty, port = System.getenv("PORT")?.toInt() ?: 8080, host = "0.0.0.0") {
 
         install(ContentNegotiation) {
             json()

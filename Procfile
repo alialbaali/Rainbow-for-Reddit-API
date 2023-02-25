@@ -1,1 +1,0 @@
-web: ./build/install/Rainbow-API/bin/Rainbow-API
